@@ -1,0 +1,6 @@
+secret_password
+tmp/*/*
+log/*
+*.png
+target/
+
