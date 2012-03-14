@@ -1,9 +1,6 @@
 /* 
  * File:   main.c
- * Author: hendri & hanna
- *
- * Created on September 30, 2011, 7:25 PM
- * 
+ * Author: hendri & hanna 
  * Tasapainotetun AVL-puun toteutus.
  */
 
