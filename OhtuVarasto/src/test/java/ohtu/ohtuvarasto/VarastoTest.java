@@ -65,4 +65,70 @@ public class VarastoTest {
         // varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
+    
+    @Test 
+    public void liikaako() {
+        varasto.lisaaVarastoon(1000);
+        assertEquals(0, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void lisaaNeg() {
+        varasto.lisaaVarastoon(-100);
+        assertEquals(10, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void liikaa() {
+        varasto.lisaaVarastoon(varasto.paljonkoMahtuu());
+        assertEquals(0, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void otaLiikaa() {
+        varasto.otaVarastosta(varasto.getTilavuus());
+        assertEquals(10, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void otaNeg() {
+        varasto.otaVarastosta(-100);
+        assertEquals(10, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void konstruktoroiTilavuus() {
+        varasto = new Varasto(10);
+        assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void konstruktoroiTilavuusNeg() {
+        varasto = new Varasto(-10);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void konstruktoroiTilavuusSaldoNeg() {
+        varasto = new Varasto(-10, 2);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void konstruktoroiTilavuusSaldoNeg2() {
+        varasto = new Varasto(10, -2);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void konstruktoroiTilavuusSaldo() {
+        varasto = new Varasto(10, 10);
+        assertEquals(-10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test 
+    public void tulostus() {
+        String teksti = "saldo = 0.0, vielä tilaa 10.0";
+        assertEquals(teksti, varasto.toString());
+    }
 }
