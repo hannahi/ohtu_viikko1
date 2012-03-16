@@ -123,7 +123,7 @@ public class VarastoTest {
     @Test 
     public void konstruktoroiTilavuusSaldo() {
         varasto = new Varasto(10, 10);
-        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(-10, varasto.getSaldo(), vertailuTarkkuus);
     }
     
     @Test 
